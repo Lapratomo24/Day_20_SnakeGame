@@ -10,6 +10,8 @@ class Food(Turtle):
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.color("red")
         self.speed("fastest")
+
+    def respawn(self):
         x_pos = random.randint(-260, 260)
         y_pos = random.randint(-260, 260)
         self.goto(x_pos, y_pos)
