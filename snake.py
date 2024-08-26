@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-POSITIONS = [0, -20, -40]
+POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -14,12 +14,18 @@ class Snake:
         self.snake_head = self.snake_block[0]
 
     def create_snake(self):
-        for position in range(0, 3):
-            t = Turtle(shape="square")
-            t.color("white")
-            t.penup()
-            t.goto(x=POSITIONS[position], y=0)
-            self.snake_block.append(t)
+        for position in POSITIONS:
+            self.add_block(position)
+
+    def add_block(self, position):
+        t = Turtle(shape="square")
+        t.color("white")
+        t.penup()
+        t.goto(position)
+        self.snake_block.append(t)
+
+    def extend_block(self):
+        self.add_block(self.snake_block[-1].position())
 
     def move(self):
         # move third block to second block
@@ -44,3 +50,4 @@ class Snake:
     def right(self):
         if self.snake_head.heading() != LEFT:
             self.snake_head.setheading(RIGHT)
+
