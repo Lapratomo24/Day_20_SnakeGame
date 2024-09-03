@@ -51,3 +51,9 @@ class Snake:
         if self.snake_head.heading() != LEFT:
             self.snake_head.setheading(RIGHT)
 
+    def respawn(self):
+        for block in self.snake_block:
+            block.goto(1000, 1000)
+        self.snake_block.clear()
+        self.create_snake()
+        self.snake_head = self.snake_block[0]
